@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+  {% block body %}
+  <div class="container">
+    <div class="col-md-8">
+      <div class="panel panel-primary">
+        <div class="panel-heading"></div>
+        <div class="panel-body">
+          <h3>Edit Profile</h3>
+          <form method="post" action="add_user_details">
+            <label>Username: &nbsp;</label>
+            <input type="text" is="username" name="username" /><br />
+            <label>Profile Pic: &nbsp;</label>
+            <input type="text" is="profile_pic" name="profile_pic" /><br />
+            <label>Location: &nbsp;&nbsp;&nbsp;</label>
+            <input type="text" is="location" name="location" /><br />
+            <input type="hidden" is="pid" name="pid" value="{{ now_user.id }}" /><br />
+            <input type="submit" value="Submit It" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

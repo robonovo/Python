@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% from datetime import datetime %}
+
+  {% block body %}
+
+
+        <div class="container">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                          <img src="/static/images/{{ oneuser.profile_pic }}" class="img-circle img-responsive" width="250" height="250" />
+                        </div>
+                        <div class="col-md-8">
+                            <h2>{{ oneuser.username }}</h2>
+                            <br />
+                            <h4>{{ oneuser.location }}</h4>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                {% for single_post in user_post %}
+                    <div class="panel-heading">
+                        {{ oneuser.username }}
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-3">
+                             <img src="/static/images/{{ oneuser.profile_pic }}" class="img-circle" width="100" height="100" />
+                        </div>
+                        <div class="col-md-9">
+{%
+if single_post.created_on != None:
+    date_object = datetime.strptime(single_post.created_on, '%Y-%m-%d')
+    formatted_date = date_object.strftime('%B %d, %Y')
+else:
+    formatted_date = 'Today 99, 2018'
+%}
+
+                            <p>{{ formatted_date }}<br />
+                            {{ single_post.post_content }}</p>
+
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+  {% endblock %}

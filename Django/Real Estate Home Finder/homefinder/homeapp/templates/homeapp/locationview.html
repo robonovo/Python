@@ -1,0 +1,48 @@
+{% extends 'homeapp/base.html' %}
+{% load static %}
+
+{% block body %}
+    <div class="col-md-1"></div>
+    <div class="col-md-8">
+      <h1>Properties in {{ location.location_name }}</h1>
+      <div class="panel-group">
+        {% for place in location.property_set.all %}
+        <div class="panel panel-primary">
+          <div class="panel-heading">{{ place.property_name }}</div>
+          <div class="panel-body">
+            <div class="col-md-4">
+              <img src="/static/homeapp/images/{{ place.image }}">
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td><label><b>Area SQ FT</b></label></td>
+                    <td>{{ place.area }}</td>
+                  </tr>
+                  <tr>
+                    <td><label><b>Price</b></label></td>
+                    <td>{{ place.price }}</td>
+                  </tr>
+                  <tr>
+                    <td><label><b>Bedrooms</b></label></td>
+                    <td>{{ place.bedrooms }}</td>
+                  </tr>
+                  <tr>
+                    <td><label><b>Bathrooms</b></label></td>
+                    <td>{{ place.bathrooms }}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">&nbsp;</td>
+                    <td><a class="btn btn-success" href="/homeapp/{{ location.id }}/{{ place.id }}">View Details</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+{% endblock %}

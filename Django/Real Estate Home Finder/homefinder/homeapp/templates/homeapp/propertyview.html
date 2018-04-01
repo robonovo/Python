@@ -1,0 +1,102 @@
+{% extends 'homeapp/base.html' %}
+{% load static %}
+
+{% block body %}
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <img src="/static/homeapp/images/{{ property.image }}">
+          <div class="caption">
+            <p><b>{{ property.property_name }}</b></p>
+          </div>
+          {% if  property.photo1 or property.photo2 or property.photo3 %}
+          <p><b> &nbsp;&nbsp;&nbsp;Interior Photos</b></p>
+          <div class="thumbnail">
+            {% if property.photo1 %}
+              <img src="/static/homeapp/images/{{ property.photo1 }}"><br />
+            {% endif %}
+            {% if property.photo2 %}
+              <img src="/static/homeapp/images/{{ property.photo2 }}"><br />
+            {% endif %}
+            {% if property.photo3 %}
+              <img src="/static/homeapp/images/{{ property.photo3 }}">
+           {% endif %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="container-fluid">
+          <div class="panel-group">
+            <div class="panel panel-primary">
+              <div class="panel-heading">Property Details</div>
+              <div class="panel-body">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <td><label><b>Area SQ FT</b></label></td>
+                      <td>{{ property.area }}</td>
+                    </tr>
+                    <tr>
+                      <td><label><b>Age</b></label></td>
+                      <td>{{ property.age }}</td>
+                    </tr>
+                    <tr>
+                      <td><label><b>Price</b></label></td>
+                      <td>{{ property.price }}</td>
+                    </tr>
+                    <tr>
+                      <td><label><b>Floors</b></label></td>
+                      <td>{{ property.floors }}</td>
+                    </tr>
+                    <tr>
+                      <td><label><b>Bedrooms</b></label></td>
+                      <td>{{ property.bedrooms }}</td>
+                    </tr>
+                    <tr>
+                      <td><label><b>Bathrooms</b></label></td>
+                      <td>{{ property.bathrooms }}</td>
+                    </tr>
+                    <tr>
+                      <td><label><b>Address</b></label></td>
+                      <td>{{ property.address }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- start google maps -->
+          <div class="thumbnail">
+            <div class="panel-group">
+              <div class="panel panel-primary">
+                <div class="panel-heading">Property Location</div>
+              </div>
+            </div>
+            <!-- <h3 style="background-color:#337ab7; color:white; padding:5px;">Property Location</h3> -->
+            <div id="map"></div>
+            <script>
+              function initMap() {
+                var uluru = {lat: {{ property.latitude }}, lng: {{ property.longitude }}};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 7,
+                  center: uluru
+                });
+                var marker = new google.maps.Marker({
+                  position: uluru,
+                  map: map
+                });
+              }
+            </script>
+            <script async defer
+              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCP88wPaX2HVrGRvk9vSBif-GMTw7frL6k&callback=initMap">
+            </script>
+          </div>
+          <!-- end google maps -->
+
+        </div>
+      </div>
+    </div>
+{% endblock %}

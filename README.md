@@ -1,0 +1,4 @@
+These Python files are a combination of raw Python (including Tkinter) in the StandAlone directory and Python Framework projects in the Django and Flask directories.  All of these projects were developed on my local Windows PC in Virtual Environments.  The StandAlone projects most likely can be downloaded and executed on your local machine.  The Framework projects will not work on your local machine as they require the database and specific plug-ins.  However screen shots were included to see the output of some of these apps.
+
+These applications were developed under Python 3.6.3 utilizing Bootstrap for much of the HTML output.  Please understand that the purpose of this coding was not fancy design but rather to demonstrate proficiency in Python coding along with utilizing associated modules.
+

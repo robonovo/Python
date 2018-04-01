@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>The Posts of {{ author }}</h1>
+    <a class="btn btn-primary" href="{% url 'posts:create' %}">New Post</a><br /><br />
+    {% for post in posts.all %}
+    <table>
+      <tr style="display:block; padding-bottom:10px;">
+        <td style="padding-right:20px;" align="center">
+          <a href="#" onClick="document.getElementById('upvote{{ post.id }}').submit()">
+            <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+          </a><br />
+          {{ post.votes_total }}<br />
+          <a href="#" onClick="document.getElementById('downvote{{ post.id }}').submit()">
+            <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+          </a>
+        </td>
+        <td><a href="{{ post.url }}">{{ post.title }}</a><br />{{ post.pub_date_formatted }} by {{ post.author.username }}</td>
+      </tr>
+    </table>
+    <form id="upvote{{ post.id }}" action="{%  url 'posts:upvote' post.id %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="frompage" value="byuser" />
+      <input type="hidden" name="author" value="{{ post.author }}" />
+    </form>
+    <form id="downvote{{ post.id }}" action="{%  url 'posts:downvote' post.id %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="frompage" value="byuser" />
+      <input type="hidden" name="author" value="{{ post.author }}" />
+    </form>
+    {% endfor %}
+{% endblock %}

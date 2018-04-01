@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+  {% block body %}
+  <div class="container">
+    <div class="col-md-9">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Posting Feeds</div>
+        {% for post in singlepost %}
+          <div class="panel-body">
+            <div class="col-md-3">
+              <b>{{ post.posted_by }}</b>
+            </div>
+            <div class="col-md-6">
+              {{ post.post_content }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endblock %}

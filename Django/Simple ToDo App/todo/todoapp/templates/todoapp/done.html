@@ -1,0 +1,11 @@
+{% extends 'todoapp/base.html' %}
+
+{% block body %}
+  <div class="container">
+    <h2>{{ task.task_name }}</h2>
+    <h4>Coming Soon - Functionality To Remove This Task When Completed</h4>
+    <p><br /></p>
+      <p><b>Description:</b> &nbsp;{{ task.task_description }}</p>
+      <p><b>Priority:</b> &nbsp;{{ task.task_priority }}</p>
+  </div>
+{% endblock %}

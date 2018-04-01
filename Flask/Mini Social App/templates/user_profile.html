@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+  {% block body %}
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-2">
+            <img src="/static/images/{{ oneuser.profile_pic }}" class="img-circle img-responsive" width="250" height="250" />
+          </div>
+          <div class="col-md-4">
+            <h2>{{ oneuser.username }}</h2>
+            <br />
+            <h4>{{ oneuser.location }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          {{ oneuser.username }}
+        </div>
+        {% for single_post in user_post %}
+        <div class="panel-body">
+          <div class="col-md-10">
+            {{ single_post.created_on }}<br />
+            {{ single_post.post_content }}<br />
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+  {% block body %}
+  <div class="container">
+    <div class="col-md-8">
+      <div class="panel panel-primary">
+        <div class="panel-heading"></div>
+        <div class="panel-body">
+          <h1>Welcome {{ this_user.username }}</h1>
+          <div class="col-md-8">
+            <form method="post" action="add_post">
+              <h3>Enter A New Post Here</h3>
+              <textarea id="pcontent" name="pcontent" rows="6" cols="60"></textarea>
+              <input id="pemail" type="hidden" name="pemail" value="{{ now_user.email }}" /><br />
+              <input type="submit" value="Post It" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

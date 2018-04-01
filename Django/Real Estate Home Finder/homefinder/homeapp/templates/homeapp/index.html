@@ -1,0 +1,28 @@
+{% extends 'homeapp/base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="/static/homeapp/images/home05.jpg" style="border:1px solid black">
+      </div>
+      <div class="col-md-8">
+        <h1>Property Arena</h1>
+        <p>Find The Best Properties In Major U.S. Cities</p>
+      </div>
+    </div>
+  </div>
+  <center><h2>Select Your Location</h2></center>
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3>Locations</h3></div>
+        {% for location in object_list %}
+        <div class="panel-body"><a href="/homeapp/{{ location.id }}">{{ location.location_name }}</a> &nbsp;
+            ({{ location.location_type }})<br /></div>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
